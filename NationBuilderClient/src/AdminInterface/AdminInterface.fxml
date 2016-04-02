@@ -23,8 +23,7 @@
             <ToolBar layoutY="12.0" prefHeight="40.0" prefWidth="450.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
                 <Button fx:id="questionButton" mnemonicParsing="false" onAction="#createQuestion" text="Create Question" />
-                  <Button mnemonicParsing="false" text="Manage Questions" />
-                  <Button mnemonicParsing="false" text="Add Student" />
+                  <Button mnemonicParsing="false" onAction="#addUser" text="Add User" />
               </items>
             </ToolBar>
             <Label layoutX="14.0" layoutY="459.0" text="Class Code:" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="14.0" />

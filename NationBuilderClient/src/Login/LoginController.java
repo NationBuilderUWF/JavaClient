@@ -34,7 +34,7 @@ public class LoginController {
         login.password = passwordTextField.getText();
 
         try{
-            Socket clientSocket = new Socket("169.254.10.178", 3000);
+            Socket clientSocket = new Socket("127.0.0.1", 3000);
             ObjectOutputStream outToServer = new ObjectOutputStream(clientSocket.getOutputStream());
             ObjectInputStream inFromServer = new ObjectInputStream(clientSocket.getInputStream());
             outToServer.writeObject(login);
