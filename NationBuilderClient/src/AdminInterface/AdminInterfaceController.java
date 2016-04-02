@@ -1,6 +1,7 @@
 package AdminInterface;
 
 import MapRender.MapRenderController;
+import QuestionForm.QuestionFormController;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -48,6 +49,23 @@ public class AdminInterfaceController {
     }
     public Button mapButton;
     public TableView<TableData> table;
+    public Button questionButton;
+
+    public void createQuestion(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("QuestionForm/QuestionForm.fxml"));
+        AnchorPane root = new AnchorPane();
+        root.getChildren().clear();
+        root.getChildren().add(loader.load());
+
+        QuestionFormController controller = loader.getController();
+        controller.initForm();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root,369,457));
+        stage.setResizable(false);
+        stage.setTitle("Question Creation Form");
+        stage.show();
+    }
 
     public void openMap(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MapRender/MapRender.fxml"));

@@ -32,14 +32,18 @@ public class QuestionFormController {
     public RadioButton adminAnswerRButtonFour;
     public int correctQuestion;
 
-    public void submitAdminQuestion(ActionEvent actionEvent) {
-        AdminQuestionReq adminQuestion = new AdminQuestionReq();
-
+    public void initForm(){
         ToggleGroup questionGroup = new ToggleGroup();
         adminAnswerRButtonOne.setToggleGroup(questionGroup);
+        adminAnswerRButtonOne.setSelected(true);
+
         adminAnswerRButtonTwo.setToggleGroup(questionGroup);
         adminAnswerRButtonThree.setToggleGroup(questionGroup);
         adminAnswerRButtonFour.setToggleGroup(questionGroup);
+    }
+
+    public void submitAdminQuestion(ActionEvent actionEvent) {
+        AdminQuestionReq adminQuestion = new AdminQuestionReq();
 
         adminQuestion.adminQuestion = adminQuestionForm.getText();
         String[] questions = new String[] {adminAnswerOneText.getText(), adminAnswerTwoText.getText(), adminAnswerThreeText.getText(), adminAnswerFourText.getText()};
@@ -55,6 +59,7 @@ public class QuestionFormController {
              correctQuestion =3;
         }else{
             System.out.println("Please Select the Create Answer");
+            return;
         }
         adminQuestion.adminCorrectAnswer = correctQuestion;
 
