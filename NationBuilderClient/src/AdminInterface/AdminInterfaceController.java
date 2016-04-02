@@ -34,9 +34,9 @@ public class AdminInterfaceController {
     }
     public TableView<TableData> dataTable;
     public Button mapButton;
-    public TableColumn<TableData, String> teamCol;
-    public TableColumn<TableData, Integer> resCol;
-    public TableColumn<TableData, Integer> tileCol;
+    public TableColumn<TableData, SimpleStringProperty> teamCol;
+    public TableColumn<TableData, SimpleIntegerProperty> resCol;
+    public TableColumn<TableData, SimpleIntegerProperty> tileCol;
 
     public void openMap(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MapRender/MapRender.fxml"));

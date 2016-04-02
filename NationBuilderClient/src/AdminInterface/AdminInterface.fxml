@@ -19,10 +19,10 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <AnchorPane prefHeight="494.0" prefWidth="450.0">
+      <AnchorPane prefHeight="494.0" prefWidth="450.0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
          <children>
             <Button fx:id="mapButton" layoutX="370.0" layoutY="455.0" mnemonicParsing="false" onAction="#openMap" text="View Map" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="11.0" />
-            <TableView fx:id="dataTable" layoutX="14.0" layoutY="119.0" prefHeight="395.0" prefWidth="421.0" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="15.0">
+            <TableView fx:id="dataTable" layoutX="14.0" layoutY="119.0" prefHeight="395.0" prefWidth="421.0" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="52.0">
               <columns>
                 <TableColumn fx:id="teamCol" prefWidth="138.66668701171875" text="Team" />
                 <TableColumn fx:id="resCol" minWidth="0.0" prefWidth="143.6666259765625" text="Resource" />
@@ -36,7 +36,7 @@
                   <Button mnemonicParsing="false" text="Add Student" />
               </items>
             </ToolBar>
-            <Label layoutX="14.0" layoutY="459.0" text="Class Code:" />
+            <Label layoutX="14.0" layoutY="459.0" text="Class Code:" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="14.0" />
          </children>
       </AnchorPane>
    </children>
