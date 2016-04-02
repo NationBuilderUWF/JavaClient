@@ -1,13 +1,9 @@
 package Map;
-import Map.Tile.Tile;
-import Users.Student;
-import java.util.ArrayList;
 
 public class Nation {
 
     private int ID;
     private int resources;
-    private ArrayList<Student> students;
 
     public int getID(){
         return ID;
@@ -15,14 +11,6 @@ public class Nation {
 
     public void setID(int ID){
         this.ID = ID;
-    }
-
-    public ArrayList<Student> getStudents() {
-        return students;
-    }
-
-    public void addStudent(ArrayList<Student> students, Student student) {
-        students.add(student);
     }
 
     public int getResources() {
@@ -33,10 +21,9 @@ public class Nation {
         this.resources = resources;
     }
 
-    public Nation(int ID, int resources, ArrayList<Student> students, Tile[] tilesOwned){
+    public Nation(int ID, int resources){
         this.ID = -1;
         this.resources = 0;
-        this.students = new ArrayList<Student>();
     }
 
 }

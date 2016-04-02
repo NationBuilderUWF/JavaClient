@@ -45,6 +45,17 @@ public class Tile {
 
     public void declareBattle(Nation attacker, int cost){
         Tile defender = map.getTile((int)SelectData.row, (int)SelectData.col);
+        int adjacent = checkAdjacency(attacker);
+        if(adjacent != 1){
+            if(adjacent == 2){
+                //displayError("tileAlreadyOwned");
+                return;
+            }
+            if(adjacent == 0){
+                //displayError("noAdjacentTiles");
+                return;
+            }
+        }
         if(!defender.isDarkFlag()){ //if tile isn't a dark zone tile
             //displayError("notDarkZoneTile"); //placeholder for actual error displaying
             return;
@@ -76,8 +87,20 @@ public class Tile {
 
     public void buyTile(Nation buyer, int cost){
         Tile product = map.getTile((int)SelectData.row,(int)SelectData.col); //retrieve desired tile
+        int adjacent = checkAdjacency(buyer);
+        if(adjacent != 1){
+            if(adjacent == 2){
+                //displayError("tileAlreadyOwned");
+                return;
+            }
+            if(adjacent == 0){
+                //displayError("noAdjacentTiles");
+                return;
+            }
+        }
         if(product.getOwner() != null){
             //displayError("tileAlreadyOwned");
+            return;
         }
 
         if(buyer.getResources() > cost){ //if nation can afford tile
@@ -88,6 +111,52 @@ public class Tile {
             //displayError("notEnoughResources");
             return;
         }
+    }
+
+    public int checkAdjacency(Nation myNation){
+        if(map.getTile((int)SelectData.row, (int)SelectData.col).getOwner() == myNation)return 2;
+        //^returns if tile of interest is already owned
+        try {
+            if(map.getTile((int)SelectData.row+1, (int)SelectData.col).getOwner() == myNation)return 1;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Tile below does not exist.");
+        }
+        try {
+            if(map.getTile((int)SelectData.row-1, (int)SelectData.col).getOwner() == myNation)return 1;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Tile above does not exist.");
+        }
+        try {
+            if(map.getTile((int)SelectData.row, (int)SelectData.col+1).getOwner() == myNation)return 1;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Tile to right does not exist.");
+        }
+        try {
+            if(map.getTile((int)SelectData.row, (int)SelectData.col-1).getOwner() == myNation)return 1;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Tile to left does not exist.");
+        }
+        try {
+            if(map.getTile((int)SelectData.row+1, (int)SelectData.col+1).getOwner() == myNation)return 1;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Tile below and to right does not exist.");
+        }
+        try {
+            if(map.getTile((int)SelectData.row+1, (int)SelectData.col-1).getOwner() == myNation)return 1;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Tile below and to left does not exist.");
+        }
+        try {
+            if(map.getTile((int)SelectData.row-1, (int)SelectData.col+1).getOwner() == myNation)return 1;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Tile above and to right does not exist.");
+        }
+        try {
+            if(map.getTile((int)SelectData.row-1, (int)SelectData.col-1).getOwner() == myNation)return 1;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Tile above and to left does not exist.");
+        }
+        return 0;//no tiles adjacent
     }
 
     public Tile(Map map, Nation owner, boolean darkFlag, boolean defendFlag, Nation attacker){
