@@ -2,6 +2,7 @@ package Map.Tile;
 import Map.Map;
 
 public class Tile {
+    /*
     private Map map;
     public Nation owner; //nation which owns tile
     private boolean darkFlag; //flag for dark zone tiles, which allow pvp
@@ -94,4 +95,5 @@ public class Tile {
         this.defendFlag = false;
         this.attacker = null;
     }
+    */
 }

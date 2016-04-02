@@ -5,6 +5,7 @@ import Map.Tile.Tile;
 import java.util.ArrayList;
 
 public class Nation {
+    /*
     private int ID;
     public int resources;
     private ArrayList<Student> students;
@@ -48,4 +49,5 @@ public class Nation {
         this.students = new ArrayList<Student>();
         this.tilesOwned = NULL;
     }
+    */
 }

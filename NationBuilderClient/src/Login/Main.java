@@ -15,11 +15,13 @@ public class Main extends Application {
         primaryStage.setTitle("Login");
         primaryStage.setScene(new Scene(root, 400, 300));
         primaryStage.show();
-        if(LoginRes.success == true && LoginRes.adim == true){
+        /*
+        if(LoginRes.success == true && LoginRes.admin == true){
 
-        }else if(LoginRes.success == true && LoginRes.adim == false){
+        }else if(LoginRes.success == true && LoginRes.admin == false){
 
         }
+        */
     }
 
 
