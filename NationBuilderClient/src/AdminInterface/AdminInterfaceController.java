@@ -32,11 +32,8 @@ public class AdminInterfaceController {
             this.tileAmount = new SimpleIntegerProperty(tileAmount);
         }
     }
-    public TableView<TableData> dataTable;
     public Button mapButton;
-    public TableColumn<TableData, SimpleStringProperty> teamCol;
-    public TableColumn<TableData, SimpleIntegerProperty> resCol;
-    public TableColumn<TableData, SimpleIntegerProperty> tileCol;
+    public AnchorPane dataTable;
 
     public void openMap(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MapRender/MapRender.fxml"));
@@ -51,12 +48,20 @@ public class AdminInterfaceController {
     }
 
     public void loadInterface(){
-        dataTable.setEditable(Boolean.FALSE);
-        teamCol.setCellValueFactory(new PropertyValueFactory<>("team"));
-        resCol.setCellValueFactory(new PropertyValueFactory<>("resourceAmount"));
-        tileCol.setCellValueFactory(new PropertyValueFactory<>("tileAmount"));
         //Temp code will get from data base later
         ObservableList<TableData> data = FXCollections.observableArrayList(new TableData("Team A",0,0),new TableData("Team B",0,0),new TableData("Team C",0,0),new TableData("Team D",0,0));
-        dataTable.setItems(data);
+        dataTable.getChildren().clear();
+        TableView<TableData> table = new TableView<>();
+        table.setEditable(false);
+
+        TableColumn team = new TableColumn("Team");
+        team.setCellValueFactory(new PropertyValueFactory<>("team"));
+        TableColumn res = new TableColumn("Resources");
+        res.setCellValueFactory(new PropertyValueFactory<>("resourceAmount"));
+        TableColumn tile = new TableColumn("Tile Amount");
+        tile.setCellValueFactory(new PropertyValueFactory<>("tileAmount"));
+
+        table.setItems(data);
+        table.getColumns().addAll(team, res, tile);
     }
 }
