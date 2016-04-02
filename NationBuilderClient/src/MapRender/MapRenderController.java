@@ -34,14 +34,12 @@ public class MapRenderController {
         mapPane.getChildren().add(circleLocation,selectionDot);
         hasMadeCircle = Boolean.TRUE;
 
-        System.out.println("X: " + x + " Y " + y);
         x = x/48;
         y = y/48;
 
         SelectData.col = x;
         SelectData.row = y;
 
-        System.out.println("Column: " + SelectData.col + " Row: " + SelectData.row);
     }
 
     public void loadMap(int array[][]){
