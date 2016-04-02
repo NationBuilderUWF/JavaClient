@@ -23,7 +23,6 @@
                 <Button fx:id="questionButton" mnemonicParsing="false" onAction="#questionAction" text="Question" />
                   <Button fx:id="buyTileButton" mnemonicParsing="false" onAction="#buyTileFunction" text="Buy Tile" />
                   <Button fx:id="battleButton" mnemonicParsing="false" onAction="#battleFunction" text="Battle for Tile" />
-                  <Button fx:id="voteButton" mnemonicParsing="false" onAction="#voidFunction" text="Vote" />
               </items>
             </ToolBar>
             <Label layoutY="14.0" text="Questions Remaining:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="14.0" />

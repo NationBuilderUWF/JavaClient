@@ -1,16 +1,9 @@
 package QuestionForm;
 
-import AdminInterface.AdminInterfaceController;
-import StudentInterface.StudentInterfaceController;
 import WebUtilities.AdminQuestionReq;
 import WebUtilities.AdminQuestionRes;
-import WebUtilities.LoginRes;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -32,18 +25,22 @@ public class QuestionFormController {
     public RadioButton adminAnswerRButtonFour;
     public int correctQuestion;
 
-    public void submitAdminQuestion(ActionEvent actionEvent) {
-        AdminQuestionReq adminQuestion = new AdminQuestionReq();
-
+    public void initForm(){
         ToggleGroup questionGroup = new ToggleGroup();
         adminAnswerRButtonOne.setToggleGroup(questionGroup);
+        adminAnswerRButtonOne.setSelected(true);
+
         adminAnswerRButtonTwo.setToggleGroup(questionGroup);
         adminAnswerRButtonThree.setToggleGroup(questionGroup);
         adminAnswerRButtonFour.setToggleGroup(questionGroup);
+    }
 
-        adminQuestion.adminQuestion = adminQuestionForm.getText();
+    public void submitAdminQuestion(ActionEvent actionEvent) {
+        AdminQuestionReq adminQuestionReq = new AdminQuestionReq();
+
+        adminQuestionReq.adminQuestion = adminQuestionForm.getText();
         String[] questions = new String[] {adminAnswerOneText.getText(), adminAnswerTwoText.getText(), adminAnswerThreeText.getText(), adminAnswerFourText.getText()};
-        adminQuestion.adminOptions = questions;
+        adminQuestionReq.adminOptions = questions;
 
         if(adminAnswerRButtonOne.isSelected() == true){
             correctQuestion = 0;
@@ -55,14 +52,15 @@ public class QuestionFormController {
              correctQuestion =3;
         }else{
             System.out.println("Please Select the Create Answer");
+            return;
         }
-        adminQuestion.adminCorrectAnswer = correctQuestion;
+        adminQuestionReq.adminCorrectAnswer = correctQuestion;
 
         try{
             Socket clientSocket = new Socket("127.0.0.1", 3000);
             ObjectOutputStream outToServer = new ObjectOutputStream(clientSocket.getOutputStream());
             ObjectInputStream inFromServer = new ObjectInputStream(clientSocket.getInputStream());
-            outToServer.writeObject(adminQuestion);
+            outToServer.writeObject(adminQuestionReq);
 
             AdminQuestionRes adminquestionResponse = (AdminQuestionRes) inFromServer.readObject();
 
