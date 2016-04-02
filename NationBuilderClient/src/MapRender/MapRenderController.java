@@ -30,7 +30,7 @@ public class MapRenderController {
         try{
             mapPane.getChildren().remove(circleLocation);
         } catch(java.lang.IndexOutOfBoundsException e){
-            e.printStackTrace();
+            System.err.println("Another One");
         }
         selectionDot = new Circle(x + 24,y + 24,10, Color.BLACK);
         mapPane.getChildren().add(circleLocation,selectionDot);
