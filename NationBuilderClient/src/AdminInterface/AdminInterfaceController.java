@@ -32,6 +32,18 @@ public class AdminInterfaceController {
             this.tileAmount = new SimpleIntegerProperty(tileAmount);
         }
 
+        public String getTeam(){
+            return team.get();
+        }
+
+        public int getResourceAmount(){
+            return resourceAmount.get();
+        }
+
+        public int getTileAmount(){
+            return tileAmount.get();
+        }
+
     }
     public Button mapButton;
     public AnchorPane dataTable;
@@ -58,7 +70,7 @@ public class AdminInterfaceController {
         TableColumn team = new TableColumn("Team");
         team.setCellValueFactory(new PropertyValueFactory<TableData, String>("team"));
         team.setResizable(true);
-        
+
         TableColumn res = new TableColumn("Resources");
         res.setCellValueFactory(new PropertyValueFactory<TableData, Integer>("resourceAmount"));
         res.setResizable(true);
@@ -69,5 +81,7 @@ public class AdminInterfaceController {
 
         table.setItems(data);
         table.getColumns().addAll(team, res, tile);
+
+        dataTable.getChildren().add(table);
     }
 }
