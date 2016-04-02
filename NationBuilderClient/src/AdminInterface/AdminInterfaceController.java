@@ -1,5 +1,7 @@
 package AdminInterface;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,14 +22,14 @@ import java.io.IOException;
 public class AdminInterfaceController {
 
     private class TableData{
-        public String team;
-        public int resourceAmount;
-        public int tileAmount;
+        public SimpleStringProperty team;
+        public SimpleIntegerProperty resourceAmount;
+        public SimpleIntegerProperty tileAmount;
 
         public TableData(String team, int resourceAmount, int tileAmount){
-            this.team = team;
-            this.resourceAmount = resourceAmount;
-            this.tileAmount = tileAmount;
+            this.team = new SimpleStringProperty(team);
+            this.resourceAmount = new SimpleIntegerProperty(resourceAmount);
+            this.tileAmount = new SimpleIntegerProperty(tileAmount);
         }
     }
     public TableView<TableData> dataTable;

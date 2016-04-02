@@ -103,8 +103,8 @@
       <file leaf-file-name="AdminInterfaceController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AdminInterface/AdminInterfaceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8433584">
-              <caret line="54" column="74" selection-start-line="54" selection-start-column="74" selection-end-line="54" selection-end-column="74" />
+            <state vertical-scroll-proportion="-0.065162905">
+              <caret line="31" column="67" selection-start-line="31" selection-start-column="67" selection-end-line="31" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -888,12 +888,12 @@
       <workItem from="1459570827861" duration="1000" />
       <workItem from="1459571707810" duration="644000" />
       <workItem from="1459577371880" duration="5282000" />
-      <workItem from="1459608359810" duration="4793000" />
+      <workItem from="1459608359810" duration="5495000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12022000" />
+    <option name="totallyTimeSpent" value="12724000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="49" width="2182" height="1402" extended-state="6" />
@@ -1416,8 +1416,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AdminInterface/AdminInterfaceController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8433584">
-          <caret line="54" column="74" selection-start-line="54" selection-start-column="74" selection-end-line="54" selection-end-column="74" />
+        <state vertical-scroll-proportion="-0.065162905">
+          <caret line="31" column="67" selection-start-line="31" selection-start-column="67" selection-end-line="31" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
