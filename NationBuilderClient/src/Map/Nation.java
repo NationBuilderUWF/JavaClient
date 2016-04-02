@@ -4,7 +4,7 @@ import Users.Student;
 import java.util.ArrayList;
 
 public class Nation {
-    /*
+
     private int ID;
     private int resources;
     private ArrayList<Student> students;
@@ -38,5 +38,5 @@ public class Nation {
         this.resources = 0;
         this.students = new ArrayList<Student>();
     }
-    */
+
 }

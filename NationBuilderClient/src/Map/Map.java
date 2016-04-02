@@ -3,7 +3,7 @@ import Map.Tile.Tile;
 import Map.Nation;
 
 public class Map{
-    /*
+
     private Tile[][] tiles;
 
     public Map(){
@@ -25,5 +25,5 @@ public class Map{
         }
         return ownership;
     }
-    */
+
 }
