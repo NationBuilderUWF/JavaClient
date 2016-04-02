@@ -1,5 +1,6 @@
 package Login;
 
+import AdminInterface.AdminInterfaceController;
 import StudentInterface.StudentInterfaceController;
 import WebUtilities.LoginReq;
 import WebUtilities.LoginRes;
@@ -42,7 +43,18 @@ public class LoginController {
             System.out.println(loginResponse.success);
             System.out.println(loginResponse.admin);
 
+            int sceneSizeX = 800;
+            int sceneSizeY = 800;
             if(loginResponse.success == true && loginResponse.admin == true){
+                Stage stage = (Stage) rootPane.getScene().getWindow();
+                stage.close();
+                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("AdminInterface/AdminInterface.fxml"));
+                Parent root = loader.load();
+                stage.setTitle("[Enter Game Name Here] Admin Console");
+                stage.setScene(new Scene(root, sceneSizeX, sceneSizeY));
+                stage.show();
+                AdminInterfaceController controller = loader.getController();
+                controller.loadInterface();
 
             }else if(loginResponse.success == true && loginResponse.admin == false){
                 Stage stage = (Stage) rootPane.getScene().getWindow();
@@ -50,11 +62,10 @@ public class LoginController {
                 FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("StudentInterface/StudentInterface.fxml"));
                 Parent root = loader.load();
                 stage.setTitle("[Enter Game Name Here] Student Console");
-                stage.setScene(new Scene(root, 800, 800));
+                stage.setScene(new Scene(root, sceneSizeX, sceneSizeY));
                 stage.show();
                 StudentInterfaceController controller = loader.getController();
                 controller.loadInterface();
-                System.out.println("Here");
             }
             clientSocket.close();
         }catch(Exception e) {
