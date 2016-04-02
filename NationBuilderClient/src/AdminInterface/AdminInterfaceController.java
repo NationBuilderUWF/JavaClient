@@ -21,7 +21,7 @@ import java.io.IOException;
  */
 public class AdminInterfaceController {
 
-    private class TableData{
+    public class TableData{
         public SimpleStringProperty team;
         public SimpleIntegerProperty resourceAmount;
         public SimpleIntegerProperty tileAmount;
@@ -46,7 +46,7 @@ public class AdminInterfaceController {
 
     }
     public Button mapButton;
-    public AnchorPane dataTable;
+    public TableView<TableData> table;
 
     public void openMap(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MapRender/MapRender.fxml"));
@@ -63,25 +63,25 @@ public class AdminInterfaceController {
     public void loadInterface(){
         //Temp code will get from data base later
         ObservableList<TableData> data = FXCollections.observableArrayList(new TableData("Team A",0,0),new TableData("Team B",0,0),new TableData("Team C",0,0),new TableData("Team D",0,0));
-        dataTable.getChildren().clear();
-        TableView<TableData> table = new TableView<>();
         table.setEditable(false);
 
         TableColumn team = new TableColumn("Team");
         team.setCellValueFactory(new PropertyValueFactory<TableData, String>("team"));
-        team.setResizable(true);
+        team.setResizable(false);
+        team.prefWidthProperty().bind(table.widthProperty().divide(3));
 
         TableColumn res = new TableColumn("Resources");
         res.setCellValueFactory(new PropertyValueFactory<TableData, Integer>("resourceAmount"));
-        res.setResizable(true);
+        res.setResizable(false);
+        res.prefWidthProperty().bind(table.widthProperty().divide(3));
 
         TableColumn tile = new TableColumn("Tile Amount");
         tile.setCellValueFactory(new PropertyValueFactory<TableData, Integer>("tileAmount"));
-        tile.setResizable(true);
+        tile.setResizable(false);
+        tile.prefWidthProperty().bind(table.widthProperty().divide(3));
 
         table.setItems(data);
         table.getColumns().addAll(team, res, tile);
 
-        dataTable.getChildren().add(table);
     }
 }
