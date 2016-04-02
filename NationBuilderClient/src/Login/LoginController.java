@@ -1,5 +1,6 @@
 package Login;
 
+import StudentInterface.StudentInterfaceController;
 import WebUtilities.LoginReq;
 import WebUtilities.LoginRes;
 import javafx.event.ActionEvent;
@@ -46,10 +47,14 @@ public class LoginController {
             }else if(loginResponse.success == true && loginResponse.admin == false){
                 Stage stage = (Stage) rootPane.getScene().getWindow();
                 stage.close();
-                Parent root = FXMLLoader.load(getClass().getResource("StudentInterface.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("StudentInterface/StudentInterface.fxml"));
+                Parent root = loader.load();
                 stage.setTitle("[Enter Game Name Here] Student Console");
-                stage.setScene(new Scene(root, 800, 600));
+                stage.setScene(new Scene(root, 800, 800));
                 stage.show();
+                StudentInterfaceController controller = loader.getController();
+                controller.loadInterface();
+                System.out.println("Here");
             }
             clientSocket.close();
         }catch(Exception e) {

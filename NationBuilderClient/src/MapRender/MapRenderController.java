@@ -1,5 +1,6 @@
 package MapRender;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.event.Event;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -14,26 +15,33 @@ public class MapRenderController {
     private static int circleLocation = amountOfTiles + 2;
     public static double height = 576;
     public static double width = 528;
+    private static boolean hasMadeCircle = Boolean.FALSE;
 
-    AnchorPane mapPane;
+    public AnchorPane mapPane;
 
     //Create selection dot to show what is currently selected
     Circle selectionDot;
 
     public void getCoords(Event event) {
         Rectangle source = (Rectangle) event.getSource();
-        double x = source.getX();
-        double y = source.getY();
+        double x = source.getLayoutX();
+        double y = source.getLayoutY();
 
-        mapPane.getChildren().remove(circleLocation);
+        if(hasMadeCircle == Boolean.TRUE) {
+            mapPane.getChildren().remove(circleLocation);
+        }
         selectionDot = new Circle(x + 24,y + 24,10, Color.BLACK);
         mapPane.getChildren().add(circleLocation,selectionDot);
+        hasMadeCircle = Boolean.TRUE;
 
+        System.out.println("X: " + x + " Y " + y);
         x = x/48;
         y = y/48;
 
         SelectData.col = x;
         SelectData.row = y;
+
+        System.out.println("Column: " + SelectData.col + " Row: " + SelectData.row);
     }
 
     public void loadMap(int array[][]){

@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.SubScene;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
@@ -13,7 +14,7 @@ import java.io.IOException;
  */
 public class StudentInterfaceController {
 
-    SubScene mapScene;
+    public AnchorPane mapPane;
 
     public void questionAction(ActionEvent actionEvent) {
     }
@@ -28,7 +29,8 @@ public class StudentInterfaceController {
     }
 
     public void loadInterface() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("MapRender.fxml"));
-        mapScene = new SubScene(root,MapRenderController.width, MapRenderController.height);
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MapRender/MapRender.fxml"));
+        mapPane.getChildren().clear();
+        mapPane.getChildren().add(loader.load());
     }
 }
