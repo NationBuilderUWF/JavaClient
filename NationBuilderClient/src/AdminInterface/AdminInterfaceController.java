@@ -1,5 +1,6 @@
 package AdminInterface;
 
+import AddUser.AddUserController;
 import MapRender.MapRenderController;
 import QuestionForm.QuestionFormController;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -7,6 +8,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -50,6 +52,23 @@ public class AdminInterfaceController {
     public Button mapButton;
     public TableView<TableData> table;
     public Button questionButton;
+
+    public void addUser(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("AddUser/AddUser.fxml"));
+        AnchorPane root = new AnchorPane();
+        root.getChildren().clear();
+        root.getChildren().add(loader.load());
+
+        AddUserController controller =  loader.getController();
+        controller.loadInterface();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root,403,192));
+        stage.setResizable(false);
+        stage.setTitle("User Creation Form");
+        stage.show();
+    }
+
 
     public void createQuestion(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("QuestionForm/QuestionForm.fxml"));
