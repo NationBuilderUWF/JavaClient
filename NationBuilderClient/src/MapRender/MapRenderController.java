@@ -12,6 +12,8 @@ import javafx.scene.shape.Rectangle;
 public class MapRenderController {
     private static int amountOfTiles = 132;
     private static int circleLocation = amountOfTiles + 2;
+    public static double height = 576;
+    public static double width = 528;
 
     AnchorPane mapPane;
 
