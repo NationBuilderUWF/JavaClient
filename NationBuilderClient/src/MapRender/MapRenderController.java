@@ -27,7 +27,7 @@ public class MapRenderController {
         double x = source.getLayoutX();
         double y = source.getLayoutY();
 
-        if(hasMadeCircle == Boolean.TRUE) {
+        if(mapPane.getChildren().get(circleLocation) != null) {
             mapPane.getChildren().remove(circleLocation);
         }
         selectionDot = new Circle(x + 24,y + 24,10, Color.BLACK);

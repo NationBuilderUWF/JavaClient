@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -30,6 +31,9 @@ public class AdminInterfaceController {
     }
     public TableView<TableData> dataTable;
     public Button mapButton;
+    public TableColumn<TableData, String> teamCol;
+    public TableColumn<TableData, Integer> resCol;
+    public TableColumn<TableData, Integer> tileCol;
 
     public void openMap(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MapRender/MapRender.fxml"));
@@ -44,6 +48,7 @@ public class AdminInterfaceController {
     }
 
     public void loadInterface(){
+        
         //Temp code will get from data base later
         ObservableList<TableData> data = FXCollections.observableArrayList(new TableData("Team A",0,0),new TableData("Team B",0,0),new TableData("Team C",0,0),new TableData("Team D",0,0));
         dataTable.setItems(data);
