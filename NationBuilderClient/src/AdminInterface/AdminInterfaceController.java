@@ -21,7 +21,7 @@ import java.io.IOException;
  */
 public class AdminInterfaceController {
 
-    private class TableData{
+    public class TableData{
         public SimpleStringProperty team;
         public SimpleIntegerProperty resourceAmount;
         public SimpleIntegerProperty tileAmount;
@@ -31,12 +31,22 @@ public class AdminInterfaceController {
             this.resourceAmount = new SimpleIntegerProperty(resourceAmount);
             this.tileAmount = new SimpleIntegerProperty(tileAmount);
         }
+
+        public String getTeam(){
+            return team.get();
+        }
+
+        public int getResourceAmount(){
+            return resourceAmount.get();
+        }
+
+        public int getTileAmount(){
+            return tileAmount.get();
+        }
+
     }
-    public TableView<TableData> dataTable;
     public Button mapButton;
-    public TableColumn<TableData, SimpleStringProperty> teamCol;
-    public TableColumn<TableData, SimpleIntegerProperty> resCol;
-    public TableColumn<TableData, SimpleIntegerProperty> tileCol;
+    public TableView<TableData> table;
 
     public void openMap(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MapRender/MapRender.fxml"));
@@ -51,12 +61,27 @@ public class AdminInterfaceController {
     }
 
     public void loadInterface(){
-        dataTable.setEditable(Boolean.FALSE);
-        teamCol.setCellValueFactory(new PropertyValueFactory<>("team"));
-        resCol.setCellValueFactory(new PropertyValueFactory<>("resourceAmount"));
-        tileCol.setCellValueFactory(new PropertyValueFactory<>("tileAmount"));
         //Temp code will get from data base later
         ObservableList<TableData> data = FXCollections.observableArrayList(new TableData("Team A",0,0),new TableData("Team B",0,0),new TableData("Team C",0,0),new TableData("Team D",0,0));
-        dataTable.setItems(data);
+        table.setEditable(false);
+
+        TableColumn team = new TableColumn("Team");
+        team.setCellValueFactory(new PropertyValueFactory<TableData, String>("team"));
+        team.setResizable(false);
+        team.prefWidthProperty().bind(table.widthProperty().divide(3));
+
+        TableColumn res = new TableColumn("Resources");
+        res.setCellValueFactory(new PropertyValueFactory<TableData, Integer>("resourceAmount"));
+        res.setResizable(false);
+        res.prefWidthProperty().bind(table.widthProperty().divide(3));
+
+        TableColumn tile = new TableColumn("Tile Amount");
+        tile.setCellValueFactory(new PropertyValueFactory<TableData, Integer>("tileAmount"));
+        tile.setResizable(false);
+        tile.prefWidthProperty().bind(table.widthProperty().divide(3));
+
+        table.setItems(data);
+        table.getColumns().addAll(team, res, tile);
+
     }
 }
