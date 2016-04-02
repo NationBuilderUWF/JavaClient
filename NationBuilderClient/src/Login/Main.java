@@ -1,5 +1,6 @@
 package Login;
 
+import WebUtilities.LoginRes;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,10 +13,13 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         primaryStage.setTitle("Login");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 400, 300));
         primaryStage.show();
+        if(LoginRes.success == true && LoginRes.adim == true){
 
+        }else if(LoginRes.success == true && LoginRes.adim == false){
 
+        }
     }
 
 

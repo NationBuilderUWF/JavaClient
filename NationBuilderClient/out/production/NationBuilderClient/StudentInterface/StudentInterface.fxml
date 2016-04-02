@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65" fx:controller="StudentInterface.StudentInterfaceController">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="555.0" prefWidth="434.0">
+         <children>
+            <ToolBar layoutY="6.0" prefHeight="40.0" prefWidth="578.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+              <items>
+                <Button fx:id="questionButton" mnemonicParsing="false" onAction="#questionAction" text="Question" />
+                  <Button fx:id="buyTileButton" mnemonicParsing="false" onAction="#buyTileFunction" text="Buy Tile" />
+                  <Button fx:id="battleButton" mnemonicParsing="false" onAction="#battleFunction" text="Battle for Tile" />
+                  <Button fx:id="voteButton" mnemonicParsing="false" onAction="#voidFunction" text="Vote" />
+              </items>
+            </ToolBar>
+            <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Questions Remaining:" />
+            <Text layoutX="258.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Teams Resources:" />
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>
