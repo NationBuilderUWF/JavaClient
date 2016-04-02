@@ -25,9 +25,6 @@ public class StudentInterfaceController {
     public void battleFunction(ActionEvent actionEvent) {
     }
 
-    public void voidFunction(ActionEvent actionEvent) {
-    }
-
     public void loadInterface() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MapRender/MapRender.fxml"));
         mapPane.getChildren().clear();

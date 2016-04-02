@@ -1,5 +1,6 @@
 package AdminInterface;
 
+import MapRender.MapRenderController;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -56,7 +57,8 @@ public class AdminInterfaceController {
 
         Stage stage = new Stage();
         stage.setTitle("Map Viewer");
-        stage.setScene(new Scene(root,500,500));
+        stage.setScene(new Scene(root, MapRenderController.width,MapRenderController.height));
+        stage.setResizable(false);
         stage.show();
     }
 
