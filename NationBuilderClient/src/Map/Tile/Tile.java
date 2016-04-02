@@ -68,8 +68,8 @@ public class Tile {
             attacker.setResources(attacker.getResources() - cost); //remove resources for cost
             defender.setAttacker(attacker);
             defender.setDefendFlag(true);
-            //server.pushNationQuestions(attacker, 1); //for each student in nation push 1 question
-            //server.pushNationQuestions(defender.getOwner());
+            //database.pushNationQuestions(attacker, 1); //for each student in nation push 1 question
+            //database.pushNationQuestions(defender.getOwner());
         }
         else{
             //displayError("notEnoughResources");
