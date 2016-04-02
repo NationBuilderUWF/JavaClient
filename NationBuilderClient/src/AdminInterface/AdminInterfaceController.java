@@ -31,6 +31,7 @@ public class AdminInterfaceController {
             this.resourceAmount = new SimpleIntegerProperty(resourceAmount);
             this.tileAmount = new SimpleIntegerProperty(tileAmount);
         }
+
     }
     public Button mapButton;
     public AnchorPane dataTable;
@@ -55,11 +56,16 @@ public class AdminInterfaceController {
         table.setEditable(false);
 
         TableColumn team = new TableColumn("Team");
-        team.setCellValueFactory(new PropertyValueFactory<>("team"));
+        team.setCellValueFactory(new PropertyValueFactory<TableData, String>("team"));
+        team.setResizable(true);
+        
         TableColumn res = new TableColumn("Resources");
-        res.setCellValueFactory(new PropertyValueFactory<>("resourceAmount"));
+        res.setCellValueFactory(new PropertyValueFactory<TableData, Integer>("resourceAmount"));
+        res.setResizable(true);
+
         TableColumn tile = new TableColumn("Tile Amount");
-        tile.setCellValueFactory(new PropertyValueFactory<>("tileAmount"));
+        tile.setCellValueFactory(new PropertyValueFactory<TableData, Integer>("tileAmount"));
+        tile.setResizable(true);
 
         table.setItems(data);
         table.getColumns().addAll(team, res, tile);
