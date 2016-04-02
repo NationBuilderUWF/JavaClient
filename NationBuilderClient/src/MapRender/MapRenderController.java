@@ -27,8 +27,10 @@ public class MapRenderController {
         double x = source.getLayoutX();
         double y = source.getLayoutY();
 
-        if(hasMadeCircle == Boolean.TRUE) {
+        try{
             mapPane.getChildren().remove(circleLocation);
+        } catch(java.lang.IndexOutOfBoundsException e){
+            System.err.println("Another One");
         }
         selectionDot = new Circle(x + 24,y + 24,10, Color.BLACK);
         mapPane.getChildren().add(circleLocation,selectionDot);

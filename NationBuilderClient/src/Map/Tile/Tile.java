@@ -1,9 +1,10 @@
 package Map.Tile;
 import Map.Map;
 import Map.Nation;
+import MapRender.SelectData;
 
 public class Tile {
-    /*
+
     private Map map;
     private Nation owner; //nation which owns tile
     private boolean darkFlag; //flag for dark zone tiles, which allow pvp
@@ -42,7 +43,8 @@ public class Tile {
         this.attacker = attacker;
     }
 
-    public void declareBattle(Nation attacker, Tile defender, int cost){
+    public void declareBattle(Nation attacker, int cost){
+        Tile defender = map.getTile((int)SelectData.row, (int)SelectData.col);
         if(!defender.isDarkFlag()){ //if tile isn't a dark zone tile
             //displayError("notDarkZoneTile"); //placeholder for actual error displaying
             return;
@@ -64,7 +66,7 @@ public class Tile {
         }
     }
 
-    public void resolveBattle(Tile defender, boolean defenderWin){
+    public void resolveBattle(Tile defender, boolean defenderWin){ //server might handle this?
         if(!defenderWin){
             defender.setOwner(defender.getAttacker());
         }
@@ -72,8 +74,8 @@ public class Tile {
         defender.setDefendFlag(false);
     }
 
-    public void buyTile(Nation buyer, Map map, int x, int y, int cost){
-        Tile product = map.getTile(x,y); //retrieve desired tile
+    public void buyTile(Nation buyer, int cost){
+        Tile product = map.getTile((int)SelectData.row,(int)SelectData.col); //retrieve desired tile
         if(product.getOwner() != null){
             //displayError("tileAlreadyOwned");
         }
@@ -95,5 +97,5 @@ public class Tile {
         this.defendFlag = false;
         this.attacker = null;
     }
-    */
+
 }

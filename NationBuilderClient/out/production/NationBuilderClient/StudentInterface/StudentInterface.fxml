@@ -26,8 +26,8 @@
                   <Button fx:id="voteButton" mnemonicParsing="false" onAction="#voidFunction" text="Vote" />
               </items>
             </ToolBar>
-            <Label layoutX="14.0" layoutY="14.0" text="Questions Remaining:" AnchorPane.leftAnchor="14.0" />
-            <Label layoutX="258.0" layoutY="14.0" text="Resources:" AnchorPane.rightAnchor="105.0" />
+            <Label layoutY="14.0" text="Questions Remaining:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="14.0" />
+            <Label layoutX="258.0" layoutY="14.0" text="Resources:" AnchorPane.rightAnchor="105.0" AnchorPane.topAnchor="14.0" />
             <AnchorPane fx:id="mapPane" layoutY="54.0" prefHeight="451.0" prefWidth="434.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="54.0" />
          </children>
       </AnchorPane>
