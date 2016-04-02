@@ -1,16 +1,9 @@
 package QuestionForm;
 
-import AdminInterface.AdminInterfaceController;
-import StudentInterface.StudentInterfaceController;
 import WebUtilities.AdminQuestionReq;
 import WebUtilities.AdminQuestionRes;
-import WebUtilities.LoginRes;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -43,11 +36,11 @@ public class QuestionFormController {
     }
 
     public void submitAdminQuestion(ActionEvent actionEvent) {
-        AdminQuestionReq adminQuestion = new AdminQuestionReq();
+        AdminQuestionReq adminQuestionReq = new AdminQuestionReq();
 
-        adminQuestion.adminQuestion = adminQuestionForm.getText();
+        adminQuestionReq.adminQuestion = adminQuestionForm.getText();
         String[] questions = new String[] {adminAnswerOneText.getText(), adminAnswerTwoText.getText(), adminAnswerThreeText.getText(), adminAnswerFourText.getText()};
-        adminQuestion.adminOptions = questions;
+        adminQuestionReq.adminOptions = questions;
 
         if(adminAnswerRButtonOne.isSelected() == true){
             correctQuestion = 0;
@@ -61,13 +54,13 @@ public class QuestionFormController {
             System.out.println("Please Select the Create Answer");
             return;
         }
-        adminQuestion.adminCorrectAnswer = correctQuestion;
+        adminQuestionReq.adminCorrectAnswer = correctQuestion;
 
         try{
             Socket clientSocket = new Socket("127.0.0.1", 3000);
             ObjectOutputStream outToServer = new ObjectOutputStream(clientSocket.getOutputStream());
             ObjectInputStream inFromServer = new ObjectInputStream(clientSocket.getInputStream());
-            outToServer.writeObject(adminQuestion);
+            outToServer.writeObject(adminQuestionReq);
 
             AdminQuestionRes adminquestionResponse = (AdminQuestionRes) inFromServer.readObject();
 
