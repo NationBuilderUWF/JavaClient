@@ -1,15 +1,13 @@
 package Map;
-import Map.Map;
 import Map.Tile.Tile;
-
+import Users.Student;
 import java.util.ArrayList;
 
 public class Nation {
     /*
     private int ID;
-    public int resources;
+    private int resources;
     private ArrayList<Student> students;
-    public Tile[] tilesOwned;
 
     public int getID(){
         return ID;
@@ -35,19 +33,10 @@ public class Nation {
         this.resources = resources;
     }
 
-    public Tile[] getTilesOwned() {
-        return tilesOwned;
-    }
-
-    public void setTilesOwned(Tile[] tilesOwned) {
-        this.tilesOwned = tilesOwned;
-    }
-
     public Nation(int ID, int resources, ArrayList<Student> students, Tile[] tilesOwned){
         this.ID = -1;
         this.resources = 0;
         this.students = new ArrayList<Student>();
-        this.tilesOwned = NULL;
     }
     */
 }
