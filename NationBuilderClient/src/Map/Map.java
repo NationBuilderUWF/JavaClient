@@ -4,8 +4,8 @@ import Map.Nation;
 
 public class Map{
 
-    private Tile[][] tiles;
-
+    public Tile[][] tiles;
+    public String _id;
     public Map(){
         this.tiles = new Tile[11][12];
         populateDarkZone();

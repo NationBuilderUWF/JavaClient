@@ -1,5 +1,6 @@
 package StudentInterface;
 
+import Map.Tile.Tile;
 import MapRender.MapRenderController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,7 @@ public class StudentInterfaceController {
     }
 
     public void buyTileFunction(ActionEvent actionEvent) {
+
     }
 
     public void battleFunction(ActionEvent actionEvent) {
@@ -29,5 +31,7 @@ public class StudentInterfaceController {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MapRender/MapRender.fxml"));
         mapPane.getChildren().clear();
         mapPane.getChildren().add(loader.load());
+        MapRenderController controller = loader.getController();
+        controller.loadInterface();
     }
 }
