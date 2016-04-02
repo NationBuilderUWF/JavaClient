@@ -28,7 +28,7 @@
               </items>
             </ToolBar>
             <Label layoutX="14.0" layoutY="459.0" text="Class Code:" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="14.0" />
-            <TableView fx:id="dataTable" layoutY="40.0" prefHeight="398.0" prefWidth="450.0" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+            <TableView fx:id="table" layoutY="40.0" prefHeight="398.0" prefWidth="450.0" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
          </children>
       </AnchorPane>
    </children>
