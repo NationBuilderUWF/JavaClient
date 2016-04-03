@@ -1,7 +1,7 @@
 package QuestionForm;
 
-import WebUtilities.AdminQuestionReq;
-import WebUtilities.AdminQuestionRes;
+import WebUtilities.AnswerQuestionReq;
+import WebUtilities.AnswerQuestionRes;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
@@ -36,11 +36,11 @@ public class QuestionFormController {
     }
 
     public void submitAdminQuestion(ActionEvent actionEvent) {
-        AdminQuestionReq adminQuestionReq = new AdminQuestionReq();
+        AnswerQuestionReq adminQuestionReq = new AnswerQuestionReq();
 
-        adminQuestionReq.adminQuestion = adminQuestionForm.getText();
-        String[] questions = new String[] {adminAnswerOneText.getText(), adminAnswerTwoText.getText(), adminAnswerThreeText.getText(), adminAnswerFourText.getText()};
-        adminQuestionReq.adminOptions = questions;
+        adminQuestionReq.question.text = adminQuestionForm.getText();
+        String[] options = new String[] {adminAnswerOneText.getText(), adminAnswerTwoText.getText(), adminAnswerThreeText.getText(), adminAnswerFourText.getText()};
+        adminQuestionReq.question.options = options;
 
         if(adminAnswerRButtonOne.isSelected() == true){
             correctQuestion = 0;
@@ -51,10 +51,10 @@ public class QuestionFormController {
         }else if(adminAnswerRButtonFour.isSelected() == true){
              correctQuestion =3;
         }else{
-            System.out.println("Please Select the Create Answer");
+            System.out.println("Please Select the Correct Answer");
             return;
         }
-        adminQuestionReq.adminCorrectAnswer = correctQuestion;
+        adminQuestionReq.question.answer = correctQuestion;
 
         try{
             Socket clientSocket = new Socket("127.0.0.1", 3000);
@@ -62,7 +62,7 @@ public class QuestionFormController {
             ObjectInputStream inFromServer = new ObjectInputStream(clientSocket.getInputStream());
             outToServer.writeObject(adminQuestionReq);
 
-            AdminQuestionRes adminquestionResponse = (AdminQuestionRes) inFromServer.readObject();
+            AnswerQuestionRes adminquestionResponse = (AnswerQuestionRes) inFromServer.readObject();
 
             System.out.println(adminquestionResponse.success);
 
