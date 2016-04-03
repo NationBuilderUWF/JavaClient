@@ -2,6 +2,7 @@ package StudentInterface;
 
 import Map.Tile.Tile;
 import MapRender.MapRenderController;
+import MapRender.SelectData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,6 +22,8 @@ public class StudentInterfaceController {
     }
 
     public void buyTileFunction(ActionEvent actionEvent) {
+        Tile tile = SelectData.map.getTile((int)SelectData.col, (int)SelectData.row);
+        tile.buyTile(SelectData.map,SelectData.nation,1);
 
     }
 
