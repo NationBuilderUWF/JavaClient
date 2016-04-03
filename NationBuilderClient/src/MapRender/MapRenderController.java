@@ -87,17 +87,19 @@ public class MapRenderController {
                     try {
                         Thread.sleep(30);
                         System.out.println("New one sent");
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    try{
+
                         SetMapReq map = new SetMapReq();
                         Map newMap = new Map();
                         map.maps = new ArrayList<Tile>();
                         for(Tile[] t : newMap.tiles){
                             for(Tile t1: t){
                                 map.maps.add(new Tile());
+
                             }
+                        }
+                        map.banks = new ArrayList<Integer>();
+                        for(int i=0;i<4;i++){
+                            map.banks.add((int) (Math.random()*100));
                         }
 
                         GetMapRes mapResponse;
@@ -111,8 +113,10 @@ public class MapRenderController {
                         SelectData.map = mapResponse.decode();
                         loadMap(SelectData.map.tiles);
                         clientSocket.close();
-                    }catch(Exception e) {
-                        System.out.println(e);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch(Exception e) {
+                        e.printStackTrace();
                     }
                 }
             }
