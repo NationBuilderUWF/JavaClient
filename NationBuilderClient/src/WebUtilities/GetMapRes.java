@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class GetMapRes implements Serializable {
     ArrayList<Tile> maps;
-
+    public static final long serialVersionUID = 1l;
     public Map decode(){
         Map temp = new Map();
         for(int x = 0; x < 11; x++){
