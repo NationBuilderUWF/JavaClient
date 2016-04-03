@@ -1,28 +1,18 @@
 package MapRender;
 
 import Map.Map;
-import AdminInterface.AdminInterfaceController;
 import Map.Nation;
 import Map.Tile.Tile;
-import StudentInterface.StudentInterfaceController;
 import WebUtilities.GetMapReq;
 import WebUtilities.GetMapRes;
-import WebUtilities.LoginRes;
 import WebUtilities.SetMapReq;
-import com.sun.org.apache.regexp.internal.RE;
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import javafx.application.Platform;
 import javafx.event.Event;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
-import org.w3c.dom.css.Rect;
 
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -64,21 +54,27 @@ public class MapRenderController {
         SelectData.col = x;
         SelectData.row = y;
 
+        System.out.println(SelectData.map.getTile((int)SelectData.col,(int)SelectData.row).isDarkFlag());
+        System.out.println(SelectData.map.getTile((int)SelectData.col,(int)SelectData.row).getOwner().getID());
+        System.out.println(SelectData.map.getTile((int)SelectData.col,(int)SelectData.row).isDefendFlag());
     }
+
+
+
     public void loadInterface(){
         SelectData.map = new Map();
-        try{
-            SelectData.map.repopulateMap();
-            SetMapReq map = new SetMapReq();
-            map.SetMapReq(SelectData.map);
-            Socket clientSocket = new Socket("169.254.10.178", 3000);
-            ObjectOutputStream outToServer = new ObjectOutputStream(clientSocket.getOutputStream());
 
-            outToServer.writeObject(map);
-
-        }catch(Exception e){
-            System.out.println(e);
-        }
+//        try{
+//            SelectData.map.repopulateMap();
+//            SetMapReq map = new SetMapReq();
+//            Socket clientSocket = new Socket("127.0.0.1", 3000);
+//            ObjectOutputStream outToServer = new ObjectOutputStream(clientSocket.getOutputStream());
+//
+//            outToServer.writeObject(map);
+//
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
 
         new Thread(new Runnable() {
 
@@ -123,9 +119,12 @@ public class MapRenderController {
                         Object o = inFromServer.readObject();
                         GetMapRes GMR  = (GetMapRes)o;
                         System.out.println("loading Map"+GMR.maps);
-
-                        //loadMap(GMR.maps);
-
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                loadMap(GMR.maps);
+                            }
+                        });
 
 
                     } catch (InterruptedException e) {
@@ -137,7 +136,7 @@ public class MapRenderController {
             }
         }).start();
     }
-    public void loadMap(Tile array[][]){
+    public void loadMap(ArrayList<Tile> tiles){
         Color darkRed = Color.web("#9f1b14");
         Color red = Color.web("#d2231a");
         Color darkBlue = Color.web("#0000b3");
@@ -149,9 +148,9 @@ public class MapRenderController {
         Color grey = Color.web("#d4d3d3");
         for(int x = 0; x < 11; x++){
             for(int y = 0; y < 12; y++){
-                if(array[x][y].isDarkFlag()){
+                if(tiles.get(x*11 + y).isDarkFlag()){
                     //is Dark
-                    Nation owner = array[x][y].getOwner();
+                    Nation owner = tiles.get(x*11 + y).getOwner();
                     if(owner.getID() == 0){
                         Rectangle rect = (Rectangle) mapPane.getChildren().get((x*11) + y);
                         rect.fillProperty().setValue(grey);
@@ -170,8 +169,8 @@ public class MapRenderController {
                     }
                 }else{
                     //not dark
-                    Nation owner = array[x][y].getOwner();
-                    if(owner.getID() == 0){
+                    Nation owner = tiles.get(x*11 + y).getOwner();
+                    if(owner == null){
                         Rectangle rect = (Rectangle) mapPane.getChildren().get((x*11) + y);
                         rect.fillProperty().setValue(Color.WHITE);
                     }else if(owner.getID() == 1){

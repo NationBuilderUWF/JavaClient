@@ -7,7 +7,6 @@ import StudentInterface.StudentInterfaceController;
 import WebUtilities.LoginReq;
 import WebUtilities.LoginRes;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -76,7 +75,7 @@ public class LoginController {
             }
             clientSocket.close();
         }catch(Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 }

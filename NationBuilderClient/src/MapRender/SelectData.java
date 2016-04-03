@@ -2,7 +2,6 @@ package MapRender;
 
 import Map.Map;
 import Map.Nation;
-import WebUtilities.LoginRes;
 
 /**
  * Created by crims_000 on 4/2/2016.

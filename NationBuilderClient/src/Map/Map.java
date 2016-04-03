@@ -1,6 +1,5 @@
 package Map;
 import Map.Tile.Tile;
-import Map.Nation;
 
 import java.io.Serializable;
 
@@ -14,6 +13,11 @@ public class Map implements Serializable{
     Nation orange;
     public Map(){
         this.tiles = new Tile[11][12];
+        for(int x = 0; x < 11;x ++){
+            for(int y = 0; y < 12; y++){
+                this.tiles[x][y] = new Tile();
+            }
+        }
         System.out.println("HEr");
         //repopulateMap();
     }
@@ -43,9 +47,9 @@ public class Map implements Serializable{
         this.green = new Nation(1,0,false);
         this.orange = new Nation(1,0,false);
         getTile(0,0).setOwner(red);
-        getTile(0,12).setOwner(blue);
-        getTile(11,0).setOwner(green);
-        getTile(11,12).setOwner(orange);
+        getTile(0,11).setOwner(blue);
+        getTile(10,0).setOwner(green);
+        getTile(10,11).setOwner(orange);
 
     }
 
