@@ -6,17 +6,17 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="426.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="426.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuestionAnswer.QuestionAnswerController">
    <children>
-      <TextArea editable="false" layoutX="26.0" layoutY="25.0" prefHeight="174.0" prefWidth="380.0" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="25.0" />
-      <Button fx:id="questionSubmitButton" layoutX="345.0" layoutY="445.0" mnemonicParsing="false" text="Submit" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
-      <RadioButton layoutX="26.0" layoutY="238.0" mnemonicParsing="false" />
-      <RadioButton layoutX="26.0" layoutY="287.0" mnemonicParsing="false" />
-      <RadioButton layoutX="26.0" layoutY="335.0" mnemonicParsing="false" />
-      <RadioButton layoutX="26.0" layoutY="383.0" mnemonicParsing="false" />
-      <TextField editable="false" layoutX="53.0" layoutY="233.0" AnchorPane.topAnchor="233.0" />
-      <TextField editable="false" layoutX="53.0" layoutY="282.0" />
-      <TextField editable="false" layoutX="53.0" layoutY="330.0" />
-      <TextField editable="false" layoutX="53.0" layoutY="378.0" />
+      <TextArea fx:id="studentQuestionForm" editable="false" layoutX="26.0" layoutY="25.0" prefHeight="174.0" prefWidth="380.0" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="25.0" />
+      <Button fx:id="questionSubmitButton" layoutX="345.0" layoutY="445.0" mnemonicParsing="false" onAction="#sub" text="Submit" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <RadioButton fx:id="studentAnswerRButtonOne" layoutX="26.0" layoutY="238.0" mnemonicParsing="false" />
+      <RadioButton fx:id="studentAnswerRButtonTwo" layoutX="26.0" layoutY="287.0" mnemonicParsing="false" />
+      <RadioButton fx:id="studentAnswerRButtonThree" layoutX="26.0" layoutY="335.0" mnemonicParsing="false" />
+      <RadioButton fx:id="studentAnswerRButtonFour" layoutX="26.0" layoutY="383.0" mnemonicParsing="false" />
+      <TextField fx:id="studentAnswerOneText" editable="false" layoutX="53.0" layoutY="233.0" AnchorPane.topAnchor="233.0" />
+      <TextField fx:id="studentAnswerTwoText" editable="false" layoutX="53.0" layoutY="282.0" />
+      <TextField fx:id="studentAnswerThreeText" editable="false" layoutX="53.0" layoutY="330.0" />
+      <TextField fx:id="studentAnswerFourText" editable="false" layoutX="53.0" layoutY="378.0" />
    </children>
 </AnchorPane>

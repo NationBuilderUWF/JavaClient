@@ -79,9 +79,9 @@ public class AdminInterfaceController {
         controller.initForm();
 
         Stage stage = new Stage();
-        stage.setScene(new Scene(root,369,457));
+        stage.setScene(new Scene(root,426,490));
         stage.setResizable(false);
-        stage.setTitle("Question Creation Form");
+        stage.setTitle("Question Answer Form");
         stage.show();
     }
 

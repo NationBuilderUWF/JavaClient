@@ -11,14 +11,14 @@ import java.util.ArrayList;
  */
 public class GetMapRes implements Serializable {
     public static final long serialVersionUID = 1L;
-     public ArrayList<Tile> maps;
+    public ArrayList<Tile> maps;
     public ArrayList<Integer> banks;
 
     public Map decode(){
         Map temp = new Map();
         for(int x = 0; x < 11; x++){
             for(int y = 0; y < 12; y++){
-                temp.tiles[x][y] = maps.get((x*11 + y));
+                temp.tiles[x][y] = maps.get((x*12 + y));
             }
         }
         return temp;

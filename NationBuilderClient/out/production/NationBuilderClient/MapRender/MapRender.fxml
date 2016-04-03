@@ -16,7 +16,7 @@
    <children>
       <AnchorPane fx:id="mapPane" prefHeight="576.0" prefWidth="528.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d2231a" height="48.0" onMouseClicked="#getCoords" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+<!--            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d2231a" height="48.0" onMouseClicked="#getCoords" stroke="BLACK" strokeType="INSIDE" width="48.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="48.0" layoutX="48.0" onMouseClicked="#getCoords" stroke="BLACK" strokeType="INSIDE" width="48.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="48.0" layoutX="96.0" onMouseClicked="#getCoords" stroke="BLACK" strokeType="INSIDE" width="48.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="48.0" layoutX="144.0" onMouseClicked="#getCoords" stroke="BLACK" strokeType="INSIDE" width="48.0" />
@@ -149,7 +149,7 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="48.0" layoutX="432.0" layoutY="528.0" onMouseClicked="#getCoords" stroke="BLACK" strokeType="INSIDE" width="48.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff6f00" height="48.0" layoutX="480.0" layoutY="528.0" onMouseClicked="#getCoords" stroke="BLACK" strokeType="INSIDE" width="48.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#020202" height="8.0" layoutY="283.0" onMouseClicked="#getCoords" stroke="BLACK" strokeType="INSIDE" width="97.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#020202" height="8.0" layoutX="431.0" layoutY="284.0" onMouseClicked="#getCoords" stroke="BLACK" strokeType="INSIDE" width="97.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#020202" height="8.0" layoutX="431.0" layoutY="284.0" onMouseClicked="#getCoords" stroke="BLACK" strokeType="INSIDE" width="97.0" />-->
          </children>
       </AnchorPane>
    </children>

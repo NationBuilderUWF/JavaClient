@@ -15,7 +15,8 @@ public class SetMapReq implements Serializable{
     public ArrayList<Tile> maps;
     public ArrayList<Integer> banks;
 
-    public void SetMapReq(Map map){
+    public  SetMapReq(Map map){
+        maps = new ArrayList<>();
         for(int x = 0; x < 11; x++){
             for(int y = 0; y < 12; y++){
                 maps.add(map.getTile(x,y));

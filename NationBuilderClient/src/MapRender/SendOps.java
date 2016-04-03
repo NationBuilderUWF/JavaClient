@@ -20,10 +20,10 @@ public class SendOps {
     public static void reinitMap(Map map, Send data){
         for(int x = 0; x < 11; x++){
             for(int y = 0; y < 12; y++){
-                map.tiles[x][y].getAttacker().setID(data.attacking[x*11 + y]);
-                map.tiles[x][y].setDefendFlag(data.defend[x*11 + y]);
-                map.tiles[x][y].setDarkFlag(data.isDark[x*11 + y]);
-                map.tiles[x][y].getOwner().setID(data.own[x*11 + y]);
+                map.tiles[x][y].getAttacker().setID(data.attacking[x*12 + y]);
+                map.tiles[x][y].setDefendFlag(data.defend[x*12 + y]);
+                map.tiles[x][y].setDarkFlag(data.isDark[x*12 + y]);
+                map.tiles[x][y].getOwner().setID(data.own[x*12 + y]);
 
             }
         }

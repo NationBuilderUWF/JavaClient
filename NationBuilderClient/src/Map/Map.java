@@ -13,13 +13,13 @@ public class Map implements Serializable{
     Nation orange;
     public Map(){
         this.tiles = new Tile[11][12];
-        for(int x = 0; x < 11;x ++){
+        for(int x = 0; x < 11; x++){
             for(int y = 0; y < 12; y++){
                 this.tiles[x][y] = new Tile();
             }
         }
-        System.out.println("HEr");
-        //repopulateMap();
+        System.out.println("Made new Map");
+        repopulateMap();
     }
 
     public void repopulateMap(){
@@ -29,23 +29,28 @@ public class Map implements Serializable{
     }
 
     public void populateDarkZone(){
-        for(int i=2; i<=8; i++){
-            for(int j=0; j<12; j++){
-                if(i>=4 && i<=6){
-                    getTile(i,j).setDarkFlag(true);
-                }
-                else if(j>=2 && j<=9){
-                    getTile(i,j).setDarkFlag(true);
-                }
+       for(int x = 2; x < 9; x++ ){
+           for(int y = 2; y < 10; y++){
+               this.getTile(x,y).setDarkFlag(true);
+           }
+       }
+        for(int x = 4; x < 7; x++){
+            for(int y = 0; y < 2; y++){
+                this.getTile(x,y).setDarkFlag(true);
+            }
+        }
+        for(int x = 4; x < 7; x++){
+            for(int y = 10; y < 12; y++){
+                this.getTile(x,y).setDarkFlag(true);
             }
         }
     }
 
     public void populateHomeTiles(){
         this.red = new Nation(1,0,false);
-        this.blue = new Nation(1,0,false);
-        this.green = new Nation(1,0,false);
-        this.orange = new Nation(1,0,false);
+        this.blue = new Nation(2,0,false);
+        this.green = new Nation(3,0,false);
+        this.orange = new Nation(4,0,false);
         getTile(0,0).setOwner(red);
         getTile(0,11).setOwner(blue);
         getTile(10,0).setOwner(green);
