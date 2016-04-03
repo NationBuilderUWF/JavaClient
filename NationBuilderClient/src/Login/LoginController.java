@@ -2,6 +2,7 @@ package Login;
 
 import AdminInterface.AdminInterfaceController;
 import MapRender.MapRenderController;
+import MapRender.SelectData;
 import StudentInterface.StudentInterfaceController;
 import WebUtilities.LoginReq;
 import WebUtilities.LoginRes;
@@ -59,6 +60,7 @@ public class LoginController {
                 controller.loadInterface();
 
             }else if(loginResponse.success == true && loginResponse.admin == false){
+                SelectData.nationID = loginResponse.nation;
                 Stage stage = (Stage) rootPane.getScene().getWindow();
                 stage.close();
                 stage.setResizable(false);

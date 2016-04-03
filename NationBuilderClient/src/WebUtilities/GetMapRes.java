@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class GetMapRes implements Serializable {
     ArrayList<Tile> maps;
+    ArrayList<Integer> banks;
 
     public Map decode(){
         Map temp = new Map();

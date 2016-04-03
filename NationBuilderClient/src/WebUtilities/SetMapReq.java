@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class SetMapReq implements Serializable{
 
     ArrayList<Tile> maps = new ArrayList<>();
+    ArrayList<Integer> banks = new ArrayList<>();
 
     public void SetMapReq(Map map){
         for(int x = 0; x < 11; x++){
