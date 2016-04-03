@@ -1,5 +1,6 @@
 package MapRender;
 
+import Map.Map;
 import AdminInterface.AdminInterfaceController;
 import Map.Nation;
 import StudentInterface.StudentInterfaceController;
@@ -62,6 +63,7 @@ public class MapRenderController {
 
     }
     public void loadInterface(){
+        SelectData.map = new Map();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -81,7 +83,8 @@ public class MapRenderController {
                         outToServer.writeObject(map);
 
                         mapResponse = (GetMapRes) inFromServer.readObject();
-                        loadMap(mapResponse.map.tiles);
+                        SelectData.map = mapResponse.decode();
+                        loadMap(SelectData.map.tiles);
                         clientSocket.close();
                     }catch(Exception e) {
                         System.out.println(e);

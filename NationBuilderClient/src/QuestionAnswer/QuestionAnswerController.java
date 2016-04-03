@@ -7,6 +7,7 @@ import Map.Nation;
  * Created by crims_000 on 4/1/2016.
  */
 public class QuestionAnswerController {
+    /*
 }
 
 public AdminQuestionReq pullQuestion(AdminQuestionReq bank[]){
@@ -19,4 +20,5 @@ public void answerQuestion(AdminQuestionReq question, StudentQuestionReq answer,
     if(question.adminCorrectAnswer == answer.studentCorrectAnswer){
         boolean success = database.addNationResources(rewarded);
     }
+    */
 }

@@ -3,7 +3,9 @@ import Map.Map;
 import Map.Nation;
 import MapRender.SelectData;
 
-public class Tile {
+import java.io.Serializable;
+
+public class Tile implements Serializable{
 
     private Map map;
     private Nation owner; //nation which owns tile
