@@ -15,7 +15,7 @@ public class Map implements Serializable{
     public Map(){
         this.tiles = new Tile[11][12];
         System.out.println("HEr");
-        repopulateMap();
+        //repopulateMap();
     }
 
     public void repopulateMap(){

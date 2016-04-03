@@ -10,9 +10,10 @@ import java.util.ArrayList;
  * Created by poebr_000 on 4/2/2016.
  */
 public class SetMapReq implements Serializable{
+    public static final long serialVersionUID = 1L;
 
-    ArrayList<Tile> maps = new ArrayList<>();
-    ArrayList<Integer> banks = new ArrayList<>();
+    public ArrayList<Tile> maps;
+    public ArrayList<Integer> banks;
 
     public void SetMapReq(Map map){
         for(int x = 0; x < 11; x++){

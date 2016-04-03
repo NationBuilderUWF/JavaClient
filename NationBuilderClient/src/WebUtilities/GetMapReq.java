@@ -9,5 +9,5 @@ import java.io.Serializable;
  * Created by poebr_000 on 4/2/2016.
  */
 public class GetMapReq implements Serializable{
-
+    public static final long serialVersionUID = 1L;
 }

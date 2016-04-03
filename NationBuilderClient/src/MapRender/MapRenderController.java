@@ -85,15 +85,24 @@ public class MapRenderController {
             public void run() {
                 while(true){
                     try {
-                        Thread.sleep(3000);
+                        Thread.sleep(30);
                         System.out.println("New one sent");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                     try{
-                        GetMapReq map = new GetMapReq();
+                        SetMapReq map = new SetMapReq();
+                        Map newMap = new Map();
+                        map.maps = new ArrayList<Tile>();
+                        for(Tile[] t : newMap.tiles){
+                            for(Tile t1: t){
+                                map.maps.add(new Tile());
+                            }
+                        }
+
                         GetMapRes mapResponse;
-                        Socket clientSocket = new Socket("169.254.10.178", 3000);
+
+                        Socket clientSocket = new Socket("localhost", 3000);
                         ObjectOutputStream outToServer = new ObjectOutputStream(clientSocket.getOutputStream());
                         ObjectInputStream inFromServer = new ObjectInputStream(clientSocket.getInputStream());
                         outToServer.writeObject(map);

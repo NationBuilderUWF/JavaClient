@@ -10,6 +10,7 @@ import java.util.ArrayList;
  * Created by poebr_000 on 4/2/2016.
  */
 public class GetMapRes implements Serializable {
+    public static final long serialVersionUID = 1L;
     ArrayList<Tile> maps;
     ArrayList<Integer> banks;
 
