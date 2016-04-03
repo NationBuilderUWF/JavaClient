@@ -3,6 +3,7 @@ package MapRender;
 import Map.Map;
 import AdminInterface.AdminInterfaceController;
 import Map.Nation;
+import Map.Tile.Tile;
 import StudentInterface.StudentInterfaceController;
 import WebUtilities.GetMapReq;
 import WebUtilities.GetMapRes;
@@ -41,6 +42,7 @@ public class MapRenderController {
     //Create selection dot to show what is currently selected
     Circle selectionDot;
 
+
     public void getCoords(Event event) {
         Rectangle source = (Rectangle) event.getSource();
         double x = source.getLayoutX();
@@ -64,6 +66,17 @@ public class MapRenderController {
     }
     public void loadInterface(){
         SelectData.map = new Map();
+        try{
+            SetMapReq map = new SetMapReq();
+            Socket clientSocket = new Socket("169.254.10.178", 3000);
+            ObjectOutputStream outToServer = new ObjectOutputStream(clientSocket.getOutputStream());
+            //map.maps = ;
+            outToServer.writeObject(map);
+
+        }catch(Exception e){
+            System.out.println(e);
+        }
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -75,7 +88,7 @@ public class MapRenderController {
                         e.printStackTrace();
                     }
                     try{
-                        SetMapReq map = new SetMapReq();
+                        GetMapReq map = new GetMapReq();
                         GetMapRes mapResponse;
                         Socket clientSocket = new Socket("169.254.10.178", 3000);
                         ObjectOutputStream outToServer = new ObjectOutputStream(clientSocket.getOutputStream());
@@ -93,7 +106,7 @@ public class MapRenderController {
             }
         }).start();
     }
-    public void loadMap(Map.Tile.Tile array[][]){
+    public void loadMap(Tile array[][]){
         Color darkRed = Color.web("#9f1b14");
         Color red = Color.web("#d2231a");
         Color darkBlue = Color.web("#0000b3");
