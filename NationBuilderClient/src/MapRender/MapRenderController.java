@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  * Created by crims_000 on 4/2/2016.
@@ -67,10 +68,12 @@ public class MapRenderController {
     public void loadInterface(){
         SelectData.map = new Map();
         try{
+            SelectData.map.repopulateMap();
             SetMapReq map = new SetMapReq();
+            map.SetMapReq(SelectData.map);
             Socket clientSocket = new Socket("169.254.10.178", 3000);
             ObjectOutputStream outToServer = new ObjectOutputStream(clientSocket.getOutputStream());
-            //map.maps = ;
+
             outToServer.writeObject(map);
 
         }catch(Exception e){
