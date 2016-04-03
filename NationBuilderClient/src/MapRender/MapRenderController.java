@@ -81,38 +81,53 @@ public class MapRenderController {
         }
 
         new Thread(new Runnable() {
+
             @Override
             public void run() {
+                SetMapReq map = new SetMapReq();
+                Map newMap = new Map();
+                map.maps = new ArrayList<Tile>();
+                for(Tile[] t : newMap.tiles){
+                    for(Tile t1: t){
+                        map.maps.add(new Tile());
+
+                    }
+                }
+                map.banks = new ArrayList<Integer>();
+                for(int i=0;i<4;i++){
+                    map.banks.add((int) (Math.random()*100));
+                }
+                GetMapRes mapResponse;
+            try {
+                Socket clientSocket = new Socket("localhost", 3000);
+                ObjectOutputStream outToServer = new ObjectOutputStream(clientSocket.getOutputStream());
+                ObjectInputStream inFromServer = new ObjectInputStream(clientSocket.getInputStream());
+                outToServer.writeObject(map);
+
+               // mapResponse = (GetMapRes) inFromServer.readObject();
+               // SelectData.map = mapResponse.decode();
+               // loadMap(SelectData.map.tiles);
+                clientSocket.close();
+            }catch(Exception e){
+                e.printStackTrace();
+            }
                 while(true){
                     try {
-                        Thread.sleep(30);
+                        Thread.sleep(3000);
                         System.out.println("New one sent");
-
-                        SetMapReq map = new SetMapReq();
-                        Map newMap = new Map();
-                        map.maps = new ArrayList<Tile>();
-                        for(Tile[] t : newMap.tiles){
-                            for(Tile t1: t){
-                                map.maps.add(new Tile());
-
-                            }
-                        }
-                        map.banks = new ArrayList<Integer>();
-                        for(int i=0;i<4;i++){
-                            map.banks.add((int) (Math.random()*100));
-                        }
-
-                        GetMapRes mapResponse;
-
                         Socket clientSocket = new Socket("localhost", 3000);
+                        GetMapReq gmr = new GetMapReq();
                         ObjectOutputStream outToServer = new ObjectOutputStream(clientSocket.getOutputStream());
                         ObjectInputStream inFromServer = new ObjectInputStream(clientSocket.getInputStream());
-                        outToServer.writeObject(map);
+                        outToServer.writeObject(gmr);
+                        Object o = inFromServer.readObject();
+                        GetMapRes GMR  = (GetMapRes)o;
+                        System.out.println("loading Map"+GMR.maps);
 
-                        mapResponse = (GetMapRes) inFromServer.readObject();
-                        SelectData.map = mapResponse.decode();
-                        loadMap(SelectData.map.tiles);
-                        clientSocket.close();
+                        //loadMap(GMR.maps);
+
+
+
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch(Exception e) {

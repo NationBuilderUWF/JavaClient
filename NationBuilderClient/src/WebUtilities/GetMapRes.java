@@ -11,8 +11,8 @@ import java.util.ArrayList;
  */
 public class GetMapRes implements Serializable {
     public static final long serialVersionUID = 1L;
-    ArrayList<Tile> maps;
-    ArrayList<Integer> banks;
+     public ArrayList<Tile> maps;
+    public ArrayList<Integer> banks;
 
     public Map decode(){
         Map temp = new Map();
