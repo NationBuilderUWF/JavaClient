@@ -8,10 +8,20 @@ public class Map implements Serializable{
 
     public Tile[][] tiles;
     public String _id;
+    Nation red;
+    Nation blue;
+    Nation green;
+    Nation orange;
     public Map(){
         this.tiles = new Tile[11][12];
         System.out.println("HEr");
-        //populateDarkZone();
+        repopulateMap();
+    }
+
+    public void repopulateMap(){
+        populateDarkZone();
+        populateHomeTiles();
+        addBoundaries();
     }
 
     public void populateDarkZone(){
@@ -25,6 +35,22 @@ public class Map implements Serializable{
                 }
             }
         }
+    }
+
+    public void populateHomeTiles(){
+        this.red = new Nation(1,0,false);
+        this.blue = new Nation(1,0,false);
+        this.green = new Nation(1,0,false);
+        this.orange = new Nation(1,0,false);
+        getTile(0,0).setOwner(red);
+        getTile(0,12).setOwner(blue);
+        getTile(11,0).setOwner(green);
+        getTile(11,12).setOwner(orange);
+
+    }
+
+    public void addBoundaries(){
+        //maybe finish if time allows
     }
 
     public Tile getTile(int x, int y){
